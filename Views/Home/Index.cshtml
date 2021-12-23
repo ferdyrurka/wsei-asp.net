@@ -1,0 +1,14 @@
+﻿@model IEnumerable<wsei_asp.net.Models.Post>
+
+@{ ViewData["Title"] = "Home Page"; }
+
+
+@foreach (var item in Model) {
+<div>
+    <h2>@item.Title</h2>
+    <span>@item.CreatedAt</span>
+    <p>@item.getShortContent()...</p>
+
+    <a asp-controller="Post" asp-action="Detail" asp-route-id="@item.Id">See more</a> |
+</div>
+}

@@ -1,0 +1,33 @@
+﻿@model wsei_asp.net.Models.Post
+
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+<div class="row">
+    <h1 class="w-100">@Model.Title</h1>
+    <span class="w-100">@Model.CreatedAt</span>
+</div>
+
+<div class="row">
+    <p>@Model.Content</p>
+</div>
+
+<div class="row">
+    <div class="w-100">
+        <h1>Comments</h1>
+    </div>
+    @foreach (var item in Model.Comments)
+    {
+        @if (item.Published)
+        { 
+            <div class="w-100">
+                <span>@item.CreatedAt</span>
+                <p>@item.Content</p>
+            </div>
+         }
+     }
+    <div class="w-100">
+        <a asp-action="AddComment" asp-route-id="@Model.Id">Add comment</a>
+    </div>
+</div>
